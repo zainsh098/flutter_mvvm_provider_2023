@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_mvvm_2023/utils/routes/routes_name.dart';
 
 
 
@@ -13,16 +14,15 @@ class _LoginScreenState extends State<LoginScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Column(
-        children: [
+      body: Center(
+        child: InkWell(
+          onTap: (){
+            Navigator.pushNamed(context, RoutesName.home);
 
+          },
 
-
-
-        ],
-
-
-
+          child: const Text('CLICK'),
+        ),
       ),
 
     );

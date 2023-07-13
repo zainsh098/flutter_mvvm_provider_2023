@@ -12,7 +12,7 @@ class NetworkApiService extends BaseApiServices {
     dynamic responseJosn;
     try {
       final response =
-          await http.get(Uri.parse(url)).timeout(Duration(seconds: 10));
+          await http.get(Uri.parse(url)).timeout(const Duration(seconds: 10));
         responseJosn=returnResposne(response);
     } on SocketException {
       throw FetchDataException("No Internet Connection ");
@@ -26,7 +26,7 @@ class NetworkApiService extends BaseApiServices {
     try {
       Response response = await post(
           Uri.parse(url),
-        body: data).timeout(Duration(seconds: 10));
+        body: data).timeout(const Duration(seconds: 10));
 
       responseJosn=returnResposne(response);
 
@@ -46,8 +46,7 @@ class NetworkApiService extends BaseApiServices {
         throw BadRequestException(response.body.toString());
       default:
         throw FetchDataException(
-            'Error occer While Communcationg with server + with status code' +
-                response.statusCode.toString());
+            'Error occer While Communcationg with server + with status code' + response.statusCode.toString());
     }
   }
 }
