@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_mvvm_2023/utils/routes/routes.dart';
+import 'package:flutter_mvvm_2023/utils/routes/routes_name.dart';
+
 
 void main() {
   runApp(const MyApp());
@@ -17,7 +20,8 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-     
+      initialRoute: RoutesName.login,
+      onGenerateRoute: Routes.generateRoute,
     );
   }
 }
