@@ -1,6 +1,7 @@
 import 'package:another_flushbar/flushbar.dart';
 import 'package:another_flushbar/flushbar_route.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_mvvm_2023/utils/routes/routes_name.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 
 class Utils {
@@ -18,9 +19,29 @@ class Utils {
   {
     showFlushbar(context: context,
         flushbar:Flushbar(
+          forwardAnimationCurve: Curves.decelerate,
+          reverseAnimationCurve: Curves.easeInOut,
+          positionOffset: 20,
+
+
+
+
           message: message,
            backgroundColor: Colors.deepOrange,
           title:'Tetxasn',messageColor: Colors.green,
+          mainButton:GestureDetector(
+            onTap: () {
+              Navigator.pushNamed(context, RoutesName.home);
+            },
+            child: Container(
+              height: 100,
+              width: 200,
+              color: Colors.amberAccent,
+              child: Text('Submit '),
+
+
+            ),
+          ),
 
 
 
