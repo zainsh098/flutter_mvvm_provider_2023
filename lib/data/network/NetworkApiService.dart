@@ -27,6 +27,9 @@ class NetworkApiService extends BaseApiServices {
       Response response = await post(
           Uri.parse(url),
         body: data).timeout(Duration(seconds: 10));
+
+      responseJosn=returnResposne(response);
+
     } on SocketException {
       throw FetchDataException("No Internet Connection ");
     }
