@@ -41,25 +41,14 @@ class Utils {
     );
   }
 
+  static snackBar(String message, BuildContext context) {
+    return ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+      content: Text(message),
+      backgroundColor: Colors.pinkAccent,
+      duration: Duration(seconds: 10),
+    ));
+  }
 
-    static snackBar(String message,BuildContext context)
-    {
-      return ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(content:Text(message),
-          backgroundColor: Colors.pinkAccent,
-            duration: Duration(seconds: 10),
-
-
-          ));
-
-
-
-
-
-
-
-
-    }
 
 
 

@@ -3,8 +3,6 @@ import 'package:flutter_mvvm_2023/utils/routes/routes_name.dart';
 
 import '../utils/utils.dart';
 
-
-
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
 
@@ -13,23 +11,61 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
+  TextEditingController _emailcontroller = TextEditingController();
+  TextEditingController _passwordController = TextEditingController();
+  FocusNode emailFocus=FocusNode();
+  FocusNode passsFocus=FocusNode();
+
+
+
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Center(
-        child: InkWell(
-          onTap: (){
-           // Navigator.pushNamed(context, RoutesName.home);
-            //Utils.toastMessage('FLutter toast---------');
-            //Utils.flushbarErrorMessage('Hi i am FLush bar', context);
-            Utils.snackBar('No Inernet Connection', context);
+        body: SafeArea(
+      child: Column(
+        children: [
+          Padding(
+            padding: const EdgeInsets.only(left: 12, right: 12),
+            child: TextFormField(
+              controller: _emailcontroller,
+              decoration: InputDecoration(
+                hintText: 'Email',
+                labelText: 'Email',
 
-          },
+              ),
+              focusNode: emailFocus,
+              onFieldSubmitted: (valu)
+              {
+                FocusScope.of(context).requestFocus(passsFocus);
 
-          child: const Text('CLICK'),
-        ),
+
+              },
+
+
+
+            ),
+          ),
+          SizedBox(
+            height: 10,
+          ),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 25),
+            child: TextFormField(
+              focusNode: passsFocus,
+
+
+              controller: _passwordController,
+              obscureText: true,
+              obscuringCharacter: '*',
+              decoration: InputDecoration(
+                  hintText: 'password',
+                  labelText: 'passsword',
+                  suffixIcon: Icon(Icons.visibility_off)),
+            ),
+          ),
+        ],
       ),
-
-    );
+    ));
   }
 }
