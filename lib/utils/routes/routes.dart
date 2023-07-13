@@ -10,13 +10,13 @@ import 'package:flutter_mvvm_2023/view/login_screen.dart';
 class Routes {
 
 
-  static MaterialPageRoute generateRoute(RouteSettings settings)
+  static Route<dynamic> generateRoute(RouteSettings settings)
   {
     switch(settings.name)
         {
       case RoutesName.home:
         return MaterialPageRoute(builder: (BuildContext context) => const HomeScreen());
-      case RoutesName.home:
+      case RoutesName.login:
           return MaterialPageRoute(builder: (BuildContext context) => const LoginScreen());
       default:
         return MaterialPageRoute(builder: (_){

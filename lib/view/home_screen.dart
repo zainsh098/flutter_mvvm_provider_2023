@@ -12,20 +12,29 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
-      body: Column(
-        children: [
+    return SafeArea(
+      child: Scaffold(
+        body: Column(
+          children: [
+
+            Container(
+              height: 300,
+                width: 400,
+              color:Colors.lightGreen
+
+            ),
 
 
 
 
 
-        ],
+          ],
 
 
+
+        ),
 
       ),
-
     );
   }
 }
