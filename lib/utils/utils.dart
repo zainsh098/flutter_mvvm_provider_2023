@@ -19,8 +19,15 @@ class Utils {
     showFlushbar(context: context,
         flushbar:Flushbar(
           message: message,
+           backgroundColor: Colors.deepOrange,
+          title:'Tetxasn',messageColor: Colors.green,
 
-        ));
+
+
+
+          duration: Duration(seconds: 10),
+
+        )..show(context),);
 
 
 

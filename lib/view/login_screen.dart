@@ -20,7 +20,8 @@ class _LoginScreenState extends State<LoginScreen> {
         child: InkWell(
           onTap: (){
            // Navigator.pushNamed(context, RoutesName.home);
-            Utils.toastMessage('FLutter toast---------');
+            //Utils.toastMessage('FLutter toast---------');
+            Utils.flushbarErrorMessage('Hi i am FLush bar', context);
           },
 
           child: const Text('CLICK'),
