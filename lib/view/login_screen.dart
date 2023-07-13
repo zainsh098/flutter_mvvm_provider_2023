@@ -21,7 +21,9 @@ class _LoginScreenState extends State<LoginScreen> {
           onTap: (){
            // Navigator.pushNamed(context, RoutesName.home);
             //Utils.toastMessage('FLutter toast---------');
-            Utils.flushbarErrorMessage('Hi i am FLush bar', context);
+            //Utils.flushbarErrorMessage('Hi i am FLush bar', context);
+            Utils.snackBar('No Inernet Connection', context);
+
           },
 
           child: const Text('CLICK'),
