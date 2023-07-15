@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mvvm_2023/res/color.dart';
 import 'package:flutter_mvvm_2023/res/components/round_button.dart';
+import 'package:flutter_mvvm_2023/view_model/auth_view_model.dart';
+import 'package:provider/provider.dart';
 
 import '../utils/utils.dart';
 
@@ -37,6 +39,9 @@ class _LoginScreenState extends State<LoginScreen> {
 
   @override
   Widget build(BuildContext context) {
+
+    final authViewModel = Provider.of<AuthViewModel>(context);
+
     final height = MediaQuery.of(context).size.height * 1;
 
     return Scaffold(
@@ -103,7 +108,17 @@ class _LoginScreenState extends State<LoginScreen> {
                   } else if (_passwordController.text.length < 6) {
                     Utils.flushbarErrorMessage(
                         'Please Enter Passowrd <6 ', context);
-                  } else {}
+                  } else {
+
+                    Map data ={
+                      'email':_emailcontroller.text.toString(),
+                      'password=':_passwordController.text.toString()
+
+
+                    };
+                    authViewModel.loginApi(data,context);
+
+                  }
                 },
               )
             ],
