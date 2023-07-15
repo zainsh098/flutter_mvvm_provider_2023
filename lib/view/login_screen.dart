@@ -39,6 +39,7 @@ class _LoginScreenState extends State<LoginScreen> {
 
   @override
   Widget build(BuildContext context) {
+    print('build');
 
     final authViewModel = Provider.of<AuthViewModel>(context);
 
@@ -96,31 +97,42 @@ class _LoginScreenState extends State<LoginScreen> {
               SizedBox(
                 height: height * .1,
               ),
-              RoundButton(
-                title: 'Login',
-                color: AppColors.amberColor,
-                onPress: () {
-                  if (_emailcontroller.text.isEmpty) {
-                    Utils.flushbarErrorMessage('Enter Email please', context);
-                  } else if (_passwordController.text.isEmpty) {
-                    Utils.flushbarErrorMessage(
-                        'Enter Password please', context);
-                  } else if (_passwordController.text.length < 6) {
-                    Utils.flushbarErrorMessage(
-                        'Please Enter Passowrd <6 ', context);
-                  } else {
 
-                    Map data ={
-                      'email':_emailcontroller.text.toString(),
-                      'password=':_passwordController.text.toString()
+              Consumer<AuthViewModel>(builder: (context,child ,value){
+
+                return    RoundButton(
+                  loading: authViewModel.loading,
+                  title: 'Login',
+                  color: AppColors.amberColor,
+                  onPress: () {
+                    if (_emailcontroller.text.isEmpty) {
+                      Utils.flushbarErrorMessage('Enter Email please', context);
+                    } else if (_passwordController.text.isEmpty) {
+                      Utils.flushbarErrorMessage(
+                          'Enter Password please', context);
+                    } else if (_passwordController.text.length < 6) {
+                      Utils.flushbarErrorMessage(
+                          'Please Enter Passowrd <6 ', context);
+                    } else {
+
+                      Map data ={
+                        'email':_emailcontroller.text.toString(),
+                        'password':_passwordController.text.toString()
 
 
-                    };
-                    authViewModel.loginApi(data,context);
+                      };
+                      authViewModel.loginApi(data,context);
 
-                  }
-                },
+                    }
+                  },
+                );
+
+
+              }
               )
+
+
+
             ],
           ),
         ));
