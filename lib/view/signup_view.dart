@@ -1,20 +1,25 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_mvvm_2023/res/color.dart';
-import 'package:flutter_mvvm_2023/res/components/round_button.dart';
-import 'package:flutter_mvvm_2023/utils/routes/routes_name.dart';
-import 'package:flutter_mvvm_2023/view_model/auth_view_model.dart';
 import 'package:provider/provider.dart';
 
+import '../res/color.dart';
+import '../res/components/round_button.dart';
+import '../utils/routes/routes_name.dart';
 import '../utils/utils.dart';
+import '../view_model/auth_view_model.dart';
 
-class LoginScreen extends StatefulWidget {
-  const LoginScreen({super.key});
+
+
+class SignUpView extends StatefulWidget {
+  const SignUpView({super.key});
 
   @override
-  State<LoginScreen> createState() => _LoginScreenState();
+  State<SignUpView> createState() => _SignUpViewState();
+
+
 }
 
-class _LoginScreenState extends State<LoginScreen> {
+class _SignUpViewState extends State<SignUpView> {
+
   ValueNotifier<bool> _obspassword = ValueNotifier<bool>(true);
 
   final TextEditingController _emailcontroller = TextEditingController();
@@ -34,9 +39,16 @@ class _LoginScreenState extends State<LoginScreen> {
     _obspassword.dispose();
   }
 
+
+
+
+
+
+
+
   @override
   Widget build(BuildContext context) {
-    print('build');
+
 
     final authViewModel = Provider.of<AuthViewModel>(context);
 
@@ -44,17 +56,41 @@ class _LoginScreenState extends State<LoginScreen> {
 
     return Scaffold(
         appBar: AppBar(
-          title: const Text('LOGIN'),
+          title: const Text('SIGNUP '),
           centerTitle: true,
         ),
         body: SafeArea(
           child: Column(
             children: [
               Padding(
-                padding: const EdgeInsets.only(left: 12, right: 12),
+                padding: const EdgeInsets.symmetric(horizontal: 20),
+
                 child: TextFormField(
                   controller: _emailcontroller,
-                  decoration: const InputDecoration(
+                  decoration:  InputDecoration(
+
+                    enabled: true,
+                    filled: true,
+                    disabledBorder: OutlineInputBorder(
+                      borderSide: BorderSide(
+                          color: Colors.deepOrange
+
+                      ),
+                      borderRadius: BorderRadius.circular(16),
+
+                    ),
+                    enabledBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(15),
+
+
+                    ),
+
+
+
+
+
+
+
                     hintText: 'Email',
                     labelText: 'Email',
                     prefixIcon: Icon(Icons.email),
@@ -71,22 +107,42 @@ class _LoginScreenState extends State<LoginScreen> {
               ValueListenableBuilder(
                 valueListenable: _obspassword,
                 builder: (context, value, child) {
-                  return TextFormField(
-                    focusNode: passsFocus,
-                    controller: _passwordController,
-                    obscureText: _obspassword.value,
-                    obscuringCharacter: '*',
-                    decoration: InputDecoration(
-                      hintText: 'password',
-                      labelText: 'passsword',
-                      prefixIcon: const Icon(Icons.lock),
-                      suffixIcon: GestureDetector(
-                          onTap: () {
-                            _obspassword.value = !_obspassword.value;
-                          },
-                          child: Icon(_obspassword.value
-                              ? Icons.visibility_off
-                              : Icons.visibility)),
+                  return Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 20),
+                    child: TextFormField(
+
+
+                      focusNode: passsFocus,
+                      controller: _passwordController,
+                      obscureText: _obspassword.value,
+                      obscuringCharacter: '*',
+                      decoration: InputDecoration(
+                        enabled: true,
+                        disabledBorder: OutlineInputBorder(
+                          borderSide: BorderSide(
+                            color: Colors.deepOrange
+
+                          ),
+                          borderRadius: BorderRadius.circular(16),
+                          
+                        ),
+                        enabledBorder: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(15),
+
+
+                        ),
+
+                        hintText: 'password',
+                        labelText: 'passsword',
+                        prefixIcon: const Icon(Icons.lock),
+                        suffixIcon: GestureDetector(
+                            onTap: () {
+                              _obspassword.value = !_obspassword.value;
+                            },
+                            child: Icon(_obspassword.value
+                                ? Icons.visibility_off
+                                : Icons.visibility)),
+                      ),
                     ),
                   );
                 },
@@ -96,8 +152,8 @@ class _LoginScreenState extends State<LoginScreen> {
               ),
               Consumer<AuthViewModel>(builder: (context, child, value) {
                 return RoundButton(
-                  loading: authViewModel.loading,
-                  title: 'Login',
+                  loading: authViewModel.signUpLoading,
+                  title: 'Signup ',
                   color: AppColors.amberColor,
                   onPress: () {
                     if (_emailcontroller.text.isEmpty) {
@@ -113,18 +169,21 @@ class _LoginScreenState extends State<LoginScreen> {
                         'email': _emailcontroller.text.toString(),
                         'password': _passwordController.text.toString()
                       };
-                      authViewModel.loginApi(data, context);
+                      authViewModel.SignUpApi(data, context);
                     }
                   },
                 );
               }),
 
-              SizedBox(height: height *0.1,),
+              SizedBox(height: height *.001,),
               TextButton(onPressed: () {
                 Navigator.pushNamed(context, RoutesName.signup);
 
 
               }, child: Text("Don't Have an account? SignUP?"))
+
+
+
             ],
           ),
         ));
