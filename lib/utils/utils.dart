@@ -5,6 +5,12 @@ import 'package:flutter_mvvm_2023/utils/routes/routes_name.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 
 class Utils {
+  static void fieldFocusChange(
+      BuildContext context, FocusNode current, FocusNode nextFocus) {
+    current.unfocus();
+    FocusScope.of(context).requestFocus(nextFocus);
+  }
+
   static toastMessage(String message) {
     Fluttertoast.showToast(
         toastLength: Toast.LENGTH_LONG,
@@ -20,22 +26,24 @@ class Utils {
       flushbar: Flushbar(
         forwardAnimationCurve: Curves.decelerate,
         reverseAnimationCurve: Curves.easeInOut,
-        positionOffset: 20,
+        positionOffset: 500,
         message: message,
         backgroundColor: Colors.deepOrange,
-        title: 'Tetxasn',
+
         messageColor: Colors.green,
-        mainButton: GestureDetector(
-          onTap: () {
-            Navigator.pushNamed(context, RoutesName.home);
-          },
-          child: Container(
-            height: 100,
-            width: 200,
-            color: Colors.amberAccent,
-            child: Text('Submit '),
-          ),
-        ),
+        // mainButton: GestureDetector(
+        //   onTap: () {
+        //     Navigator.pushNamed(context, RoutesName.home);
+        //   },
+        //   child: Container(
+        //     height: 100,
+        //     width: 200,
+        //     color: Colors.amberAccent,
+        //     child: Text('Submit '),
+        //   ),
+        // ),
+
+
         duration: Duration(seconds: 10),
       )..show(context),
     );
@@ -48,8 +56,4 @@ class Utils {
       duration: Duration(seconds: 10),
     ));
   }
-
-
-
-
 }
