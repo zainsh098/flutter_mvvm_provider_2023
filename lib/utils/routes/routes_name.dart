@@ -4,6 +4,7 @@ class RoutesName{
 
 
   //Splash Screen
+  static const String splash='splash-screen';
   //account routes  name
   static const String login='login-screen';
 

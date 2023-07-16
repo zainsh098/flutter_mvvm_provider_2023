@@ -8,6 +8,8 @@ import 'package:flutter_mvvm_2023/view/home_screen.dart';
 import 'package:flutter_mvvm_2023/view/login_screen.dart';
 import 'package:flutter_mvvm_2023/view/signup_view.dart';
 
+import '../../view/splash_view.dart';
+
 class Routes {
 
 
@@ -21,6 +23,8 @@ class Routes {
           return MaterialPageRoute(builder: (BuildContext context) => const LoginScreen());
       case RoutesName.signup:
         return MaterialPageRoute(builder: (BuildContext context) =>const SignUpView());
+      case RoutesName.splash:
+        return MaterialPageRoute(builder: (BuildContext context) =>const SplashView());
       default:
         return MaterialPageRoute(builder: (_){
           return const Scaffold(

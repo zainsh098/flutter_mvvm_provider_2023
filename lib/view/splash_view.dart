@@ -14,23 +14,25 @@ class _SplashViewState extends State<SplashView> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: Text('Splash Screen'),),
-      body: Column(
-        children: [
+      body: SafeArea(
+        child: Column(
+          children: [
 
 
-          Container(
+            Container(
 
-            height: 40,
-            width: 250,
-            color: Colors.deepPurple,
+              height: 40,
+              width: 250,
+              color: Colors.deepPurple,
 
-          )
-
-
-        ],
+            )
 
 
+          ],
 
+
+
+        ),
       ),
 
 
