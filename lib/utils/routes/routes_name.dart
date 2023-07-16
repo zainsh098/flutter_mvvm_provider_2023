@@ -2,6 +2,8 @@
 
 class RoutesName{
 
+
+  //Splash Screen
   //account routes  name
   static const String login='login-screen';
 

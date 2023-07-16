@@ -62,6 +62,7 @@ class _SignUpViewState extends State<SignUpView> {
         body: SafeArea(
           child: Column(
             children: [
+
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 20),
 

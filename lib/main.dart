@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_mvvm_2023/utils/routes/routes.dart';
 import 'package:flutter_mvvm_2023/utils/routes/routes_name.dart';
 import 'package:flutter_mvvm_2023/view_model/auth_view_model.dart';
+import 'package:flutter_mvvm_2023/view_model/user_view_model.dart';
 import 'package:provider/provider.dart';
 
 
@@ -17,6 +18,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiProvider(providers: [
       ChangeNotifierProvider(create: (_) => AuthViewModel()),
+      ChangeNotifierProvider(create: (_) => UserViewModel()),
 
 
     ],
