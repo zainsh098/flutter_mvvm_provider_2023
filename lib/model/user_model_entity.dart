@@ -6,9 +6,10 @@ import 'dart:convert';
 class UserModelEntity {
 	String? token;
 
-	UserModelEntity({required token});
 
-	factory UserModelEntity.fromJson(Map<String, dynamic> json) => $UserModelEntityFromJson(json);
+
+
+  factory UserModelEntity.fromJson(Map<String, dynamic> json) => $UserModelEntityFromJson(json);
 
 	Map<String, dynamic> toJson() => $UserModelEntityToJson(this);
 

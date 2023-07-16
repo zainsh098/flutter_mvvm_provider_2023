@@ -123,7 +123,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 );
               }),
 
-              SizedBox(height: height *0.1,),
+              SizedBox(height: height *0.001,),
               TextButton(onPressed: () {
                 Navigator.pushNamed(context, RoutesName.signup);
 

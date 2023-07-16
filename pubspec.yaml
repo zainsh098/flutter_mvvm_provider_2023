@@ -40,10 +40,12 @@ dependencies:
   another_flushbar: ^1.12.30
   provider: ^6.0.5
   shared_preferences: ^2.2.0
+  json_annotation: ^4.5.1
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
+
 
   # The "flutter_lints" package below contains a set of recommended lints to
   # encourage good coding practices. The lint set provided by the package is
