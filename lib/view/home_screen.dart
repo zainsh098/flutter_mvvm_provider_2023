@@ -3,6 +3,8 @@ import 'package:flutter_mvvm_2023/data/response/status.dart';
 import 'package:flutter_mvvm_2023/view_model/home_view_model.dart';
 import 'package:provider/provider.dart';
 
+import '../utils/utils.dart';
+
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
 
@@ -43,6 +45,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       child:ListTile(
                         title: Text(value.moviesList.data!.movies![index].title.toString()),
                         trailing: Image.network(value.moviesList.data!.movies![index].posterurl.toString()),
+                        
 
 
 
