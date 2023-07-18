@@ -45,7 +45,8 @@ class _HomeScreenState extends State<HomeScreen> {
                       child:ListTile(
                         title: Text(value.moviesList.data!.movies![index].title.toString()),
                         trailing: Image.network(value.moviesList.data!.movies![index].posterurl.toString()),
-                        
+
+                        leading: Text(Utils.averageRating(value.moviesList.data!.movies![index].ratings!).toStringAsFixed(1)),
 
 
 
