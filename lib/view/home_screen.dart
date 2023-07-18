@@ -26,7 +26,34 @@ class _HomeScreenState extends State<HomeScreen> {
         appBar: AppBar(
           title: Text('HOME'),
         ),
-        body:
+        body: ChangeNotifierProvider<HomeViewModel>(
+          create: (BuildContext context) => homeViewModel,
+          child: Consumer<HomeViewModel>(builder: (context, value, _) {
+
+            switch(value.moviesList.status) {
+              case Status.lOADING:
+                return CircularProgressIndicator();
+              case Status.ERROR:
+                return Text(value.moviesList.message.toString());
+              case Status.COMPLETED:
+                return ListView.builder(
+                  itemCount: value.moviesList.data!.movies!.length,
+                  itemBuilder: (context, index) {
+                    return Card(
+                      child:ListTile(
+                        title: Text(value.moviesList.data!.movies![index].title.toString()),
+                        trailing: Image.network(value.moviesList.data!.movies![index].posterurl.toString()),
+
+
+
+
+                      ) ,
+
+
+                    );
+
+                  },
+                );
 
               default:
                 return Text('null');
